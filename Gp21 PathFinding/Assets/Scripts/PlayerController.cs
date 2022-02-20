@@ -22,6 +22,15 @@ public class PlayerController : MonoBehaviour
         //movement input vertical and horizontally
         var horInput = Input.GetAxis("Horizontal");
         var vertInput = Input.GetAxis("Vertical");
+        
+        //Adding rotation in movement direction
+        Vector3 movement = new Vector3(horInput, 0.0f, vertInput);
+        movement.Normalize();
+        if (movement != Vector3.zero)
+        {
+            transform.forward = movement;
+        }
+        
         //Set move velocity
         _rb.velocity = new Vector3(horInput * moveSpeed, _rb.velocity.y, vertInput * moveSpeed);
         
