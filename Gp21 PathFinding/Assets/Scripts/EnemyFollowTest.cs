@@ -5,19 +5,26 @@ using UnityEngine;
 public class EnemyFollowTest : MonoBehaviour
 {
     
-    public float speed;
+    public float speed = 3f;
+    public float rotationDamp = .5f;
     public Transform target;
     public float minimumDistance;
     
     void Update()
     {
-        // using guide: https://www.youtube.com/watch?v=dmQyfWxUNPw&list=PLVYYdtLY07hTstdXRVAQGR0YaNH4pnvpv&index=1
-        if (Vector2.Distance(transform.position, target.position) > minimumDistance)
-        {
-            transform.position = Vector2.MoveTowards(transform.position, 
-                target.position, speed * Time.deltaTime);
-        }
+        Turn();
+        Move();
+    }
 
-        
+    void Turn()
+    {
+        Vector3 targetDist = target.position - transform.position;
+        Quaternion rotation = Quaternion.LookRotation(targetDist);
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationDamp * Time.deltaTime); 
+    }
+
+    void Move()
+    {
+        transform.position += transform.forward * speed * Time.deltaTime;
     }
 }
