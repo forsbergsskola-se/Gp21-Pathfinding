@@ -879,7 +879,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
-  gridWorldSize: {x: 45, y: 45, z: 0}
+  gridWorldSize: {x: 20, y: 20, z: 20}
   nodeRadius: 0.5
   distance: 0
 --- !u!4 &1386117544
