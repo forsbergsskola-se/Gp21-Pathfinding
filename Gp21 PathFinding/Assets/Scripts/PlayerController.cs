@@ -19,6 +19,10 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //trigger event
+        if (Input.GetKeyDown(KeyCode.T))
+            EventManager.MyEvent();
+        
         //movement input vertical and horizontally
         var horInput = Input.GetAxis("Horizontal");
         var vertInput = Input.GetAxis("Vertical");

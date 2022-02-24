@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 482990191462387364}
   - component: {fileID: 2290175152557230034}
   - component: {fileID: 3900477388525231243}
+  - component: {fileID: 5570152422697525744}
   m_Layer: 0
   m_Name: Enemy Pathfinder
   m_TagString: Untagged
@@ -214,6 +215,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &5570152422697525744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1865612578327431703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5768d1b085e97c4abcb4ef61087e525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  rotationDamp: 0.5
+  target: {fileID: 8070778125687677133, guid: b5ae6a8befdc4d848987346b6dec4bad, type: 3}
+  rayCastOffset: 2.5
+  detectionDistance: 20
+  minimumDistance: 0
 --- !u!1 &4092366529205791688
 GameObject:
   m_ObjectHideFlags: 0
