@@ -21,6 +21,7 @@ public class EnemySpawner : MonoBehaviour
     private void OnDisable()
     {
         EventManager.onMyEvent -= StartSpawn;
+        StopSpawn();
     }
 
     void SpawnEnemy()

@@ -213,7 +213,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 199821006}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 14.31, y: 7.31, z: 7.67}
+  m_LocalPosition: {x: 10.95, y: 2.73, z: 21.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -699,6 +699,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1386117544}
   - component: {fileID: 1386117543}
+  - component: {fileID: 1386117545}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -722,7 +723,7 @@ MonoBehaviour:
   obstacleMask:
     serializedVersion: 2
     m_Bits: 64
-  gridWorldSize: {x: 10, y: 10, z: 10}
+  gridWorldSize: {x: 45, y: 10, z: 45}
   nodeRadius: 0.5
   distance: 0
 --- !u!4 &1386117544
@@ -740,6 +741,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1386117545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386117542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 732442b5b2765b24c8b109cc3293fc03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartPosition: {fileID: 2064620499}
+  TargetPosition: {fileID: 199821010}
 --- !u!1 &1414831422
 GameObject:
   m_ObjectHideFlags: 0

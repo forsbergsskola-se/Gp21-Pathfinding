@@ -49,7 +49,24 @@ public class PathFinding : MonoBehaviour
                 GetFinalPath(startNode, targetNode);
             }
 
-            
+            foreach (Node NeighborNode in grid.GetNeighboringNodes(currentNode))
+            {
+                if (!NeighborNode.isObstacle || ClosedHash.Contains(NeighborNode))
+                    continue;
+                int moveCost = currentNode.gCost + GetManhattanDistance(currentNode, NeighborNode);
+
+                if (moveCost < NeighborNode.gCost || !OpenList.Contains(NeighborNode))
+                {
+                    NeighborNode.gCost = moveCost;
+                    NeighborNode.hCost = GetManhattanDistance(NeighborNode, targetNode);
+                    NeighborNode.parent = currentNode;
+
+                    if (!OpenList.Contains(NeighborNode))
+                    {
+                        OpenList.Add(NeighborNode);
+                    }
+                }
+            }
         }
     }
 
@@ -65,5 +82,14 @@ public class PathFinding : MonoBehaviour
         }
         pathComplete.Reverse();
         grid.pathComplete = pathComplete;
+    }
+
+    int GetManhattanDistance(Node _nodeA, Node _nodeB)
+    {
+        int ix = (int) MathF.Abs(_nodeA.gridX - _nodeB.gridX);
+        int iy = (int) MathF.Abs(_nodeA.gridY - _nodeB.gridY);
+        int iz = (int) MathF.Abs(_nodeA.gridZ - _nodeB.gridZ);
+
+        return ix + iy + iz;
     }
 }

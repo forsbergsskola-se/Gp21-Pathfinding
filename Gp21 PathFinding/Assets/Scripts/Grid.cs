@@ -68,6 +68,23 @@ public class Grid : MonoBehaviour
         return grid[x, y, z];
     }
 
+    public List<Node> GetNeighboringNodes(Node _node)
+    {
+        List<Node> NeighboringNodes = new List<Node>();
+
+        for (int x = Math.Max(_node.gridX -1, 0); x < _node.gridX +2 && x < gridSizeX; x++)
+        {
+            for (int y = Math.Max(_node.gridY -1, 0); y < _node.gridY +2 && y < gridSizeY; y++)
+            {
+                for (int z = Math.Max(_node.gridZ -1, 0); z < _node.gridZ +2 && z < gridSizeZ; z++)
+                {
+                    NeighboringNodes.Add(grid[x, y, z]);
+                }
+            }
+        }
+        return NeighboringNodes;
+    }
+    
     private void OnDrawGizmos()
     {
         //declare gridbox for controlling gridsize
