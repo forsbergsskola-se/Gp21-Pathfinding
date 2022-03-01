@@ -9,7 +9,7 @@ public class EnemyFollowTest : MonoBehaviour
     [SerializeField] float rotationDamp = .5f;
     [SerializeField] Transform target;
     [SerializeField] float rayCastOffset = 2.5f;
-    [SerializeField] float detectionDistance = 20f;
+    [SerializeField] float detectionDistance = 10f;
     [SerializeField] float minimumDistance;
     
     void Update()
@@ -24,7 +24,7 @@ public class EnemyFollowTest : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 raycastOffset = Vector3.zero;
-
+    
         Vector3 left = transform.position - transform.right * rayCastOffset;
         Vector3 right = transform.position + transform.right * rayCastOffset;
         Vector3 up = transform.position + transform.up * rayCastOffset;
@@ -43,7 +43,7 @@ public class EnemyFollowTest : MonoBehaviour
             raycastOffset -= Vector3.up;
         else if (Physics.Raycast(down, transform.forward, out hit, detectionDistance))
             raycastOffset += Vector3.up;
-
+    
         if (raycastOffset != Vector3.zero)
             transform.Rotate(raycastOffset * 5f * Time.deltaTime);
         else

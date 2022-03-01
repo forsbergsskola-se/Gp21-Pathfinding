@@ -98,17 +98,23 @@ public class Grid : MonoBehaviour
                 //Checking if current node is an obstacle and if so, set color accordingly
                 if (node.isObstacle)
                 {
+                    //Set Node Color if not obstacle
                     Gizmos.color = Color.gray;
                 }
                 else
                 {
+                    //Set Node Color if obstacle
                     Gizmos.color = Color.green;
                 }
     
                 //if final path is not empty
                 if (pathComplete != null)
                 {
-                    Gizmos.color = Color.red;
+                    if (pathComplete.Contains(node))
+                    {
+                        //Set Node Color path
+                        Gizmos.color = Color.red;
+                    }
                 }
                 
                 //draw node at position of the node

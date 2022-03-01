@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class PathFinding : MonoBehaviour
 {
+    //Following https://www.youtube.com/watch?v=AKKpPmxx07w
+    
     private Grid grid;
     public Transform StartPosition;
     public Transform TargetPosition;

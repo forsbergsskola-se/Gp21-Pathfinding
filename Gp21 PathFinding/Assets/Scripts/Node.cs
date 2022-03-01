@@ -5,6 +5,7 @@ using UnityEngine;
 public class Node
 {
     //Following https://www.youtube.com/watch?v=AKKpPmxx07w
+    
     public int gridX; // Xposition in node array
     public int gridY; // Yposition in node array
     public int gridZ; // Zposition in node array
