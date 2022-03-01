@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     private float dashTime;
     public float startDashTime;
     private int direction;
+    public EnemySpawner enemySpawner;
 
     private void Start()
     {
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
         //trigger event
         if (Input.GetKeyDown(KeyCode.T))
             EventManager.MyEvent();
+           
         
         //movement input vertical and horizontally
         var horInput = Input.GetAxis("Horizontal");

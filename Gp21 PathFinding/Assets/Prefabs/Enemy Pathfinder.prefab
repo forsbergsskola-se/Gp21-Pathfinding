@@ -222,7 +222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865612578327431703}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c5768d1b085e97c4abcb4ef61087e525, type: 3}
   m_Name: 
@@ -231,7 +231,7 @@ MonoBehaviour:
   rotationDamp: 0.5
   target: {fileID: 8070778125687677133, guid: b5ae6a8befdc4d848987346b6dec4bad, type: 3}
   rayCastOffset: 2.5
-  detectionDistance: 20
+  detectionDistance: 10
   minimumDistance: 0
 --- !u!1 &4092366529205791688
 GameObject:

@@ -8,7 +8,7 @@ public class EnemyFollowTest : MonoBehaviour
     [SerializeField] float speed = 5f;
     [SerializeField] float rotationDamp = .5f;
     [SerializeField] Transform target;
-    [SerializeField] float rayCastOffset = 2.5f;
+    [SerializeField] float rayCastOffset = 1.5f;
     [SerializeField] float detectionDistance = 10f;
     [SerializeField] float minimumDistance;
     

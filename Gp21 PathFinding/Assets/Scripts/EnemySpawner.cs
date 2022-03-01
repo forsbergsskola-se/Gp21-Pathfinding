@@ -15,13 +15,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        EventManager.onMyEvent += StartSpawn;
+        EventManager.onMyEvent += SpawnEnemy;
     }
-
+    
     private void OnDisable()
     {
-        EventManager.onMyEvent -= StartSpawn;
-        StopSpawn();
+        EventManager.onMyEvent -= SpawnEnemy;
+        //StopSpawn();
     }
 
     void SpawnEnemy()
@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
 
     void StartSpawn()
     {
-        InvokeRepeating("SpawnEnemy", spawnTimer, spawnTimer);
+        //InvokeRepeating("SpawnEnemy", spawnTimer, spawnTimer);
     }
     void StopSpawn()
     {
