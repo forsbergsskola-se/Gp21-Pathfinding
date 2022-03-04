@@ -6,29 +6,48 @@ using UnityEngine;
 public class PathFinding : MonoBehaviour
 {
     //Following https://www.youtube.com/watch?v=AKKpPmxx07w
-    
+    List<Node> OpenList = new List<Node>();
+    HashSet<Node> ClosedHash = new HashSet<Node>();
     private Grid grid;
     public Transform StartPosition;
     public Transform TargetPosition;
-
-    private void Awake()
+    private Vector3 LastTargetNodePosition;
+    private Vector3 lastTargetPosition;
+    public List<Node> closestNodesToTarget;
+    private void Start()
     {
         grid = GetComponent<Grid>();
+        StartCoroutine(Timer());
+
     }
 
-    private void Update()
+    IEnumerator Timer()
     {
         FindPath(StartPosition.position, TargetPosition.position);
-    }
+        yield return new WaitForSeconds(1);
+        StartCoroutine(Timer());
+    } 
+    
 
     void FindPath(Vector3 _StartPos, Vector3 _TargetPos)
     {
+        if (Vector3.Distance(lastTargetPosition, _TargetPos) > 2)
+        {
+            lastTargetPosition = _TargetPos;
+            closestNodesToTarget = grid.GetNodesInRadius(_TargetPos, 2);
+        }
+        
+        if (LastTargetNodePosition == grid.ClosestNodeToLocation(_TargetPos, closestNodesToTarget).position)
+            return;
+
+        LastTargetNodePosition = grid.ClosestNodeToLocation(_TargetPos).position;
+
         Node startNode = grid.NodeFromWorldPosition(_StartPos);
         Node targetNode = grid.NodeFromWorldPosition(_TargetPos);
-
-        List<Node> OpenList = new List<Node>();
-        HashSet<Node> ClosedHash = new HashSet<Node>();
         
+        OpenList.Clear();
+        ClosedHash.Clear();
+        //switch to priority queue.
         OpenList.Add(startNode);
 
         while (OpenList.Count > 0)

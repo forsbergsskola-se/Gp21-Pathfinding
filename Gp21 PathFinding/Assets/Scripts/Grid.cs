@@ -44,10 +44,7 @@ public class Grid : MonoBehaviour
 
                     grid[x, y, z] = new Node(obstacle, worldPoint, x, y, z);
                 }
-                
             }
-
-            
         }
     }
 
@@ -67,10 +64,11 @@ public class Grid : MonoBehaviour
         
         return grid[x, y, z];
     }
-
+    List<Node> NeighboringNodes = new List<Node>();
     public List<Node> GetNeighboringNodes(Node _node)
     {
-        List<Node> NeighboringNodes = new List<Node>();
+        //makes a new list every time, bad performance
+        NeighboringNodes.Clear();
 
         for (int x = Math.Max(_node.gridX -1, 0); x < _node.gridX +2 && x < gridSizeX; x++)
         {
@@ -84,7 +82,54 @@ public class Grid : MonoBehaviour
         }
         return NeighboringNodes;
     }
+
     
+    public List<Node> GetNodesInRadius(Vector3 _targetLocation, float _radius)
+    {
+        List<Node> tempNodes = new List<Node>();
+        foreach (Node node in grid)
+        {
+            if (Vector3.Distance(node.position, _targetLocation) <= _radius)
+                tempNodes.Add(node);
+        }
+
+        return tempNodes;
+    }
+
+    public Node ClosestNodeToLocation(Vector3 _Target, List<Node> nodes = null)
+    {
+        Node tempNode = null;
+        int loopIndex = 0;
+        float tempDistance = 0;
+
+        if (nodes == null)
+        {
+            foreach (Node node in grid)
+            {
+                if (loopIndex == 0 || (Vector3.Distance(_Target, node.position) < tempDistance))
+                {
+                    tempDistance = Vector3.Distance(_Target, node.position);
+                    tempNode = node;
+                }
+                loopIndex++;
+            }
+        }
+        else
+        {
+            foreach (Node node in nodes)
+            {
+                if (loopIndex == 0 || (Vector3.Distance(_Target, node.position) < tempDistance))
+                {
+                    tempDistance = Vector3.Distance(_Target, node.position);
+                    tempNode = node;
+                }
+                loopIndex++;
+            }
+        }
+        
+        return tempNode;
+    }
+
     private void OnDrawGizmos()
     {
         //declare gridbox for controlling gridsize
